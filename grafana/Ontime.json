@@ -1,0 +1,294 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "links": [],
+  "refresh": false,
+  "rows": [
+    {
+      "collapse": false,
+      "height": 303,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "demo",
+          "fill": 1,
+          "id": 1,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "database": "default",
+              "dateColDataType": "FlightDate",
+              "dateLoading": false,
+              "dateTimeColDataType": "toDateTime(FlightDate)",
+              "datetimeLoading": false,
+              "formattedQuery": "<font color=\"darkorange\">SELECT</font> <font color=\"darkcyan\">$timeSeries</font> <font color=\"darkorange\">as</font> t, <font color=\"navajowhite\">count</font>(<font color=\"yellow\">*</font>) Flights <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font> <font color=\"darkorange\">WHERE</font> OriginState <font color=\"darkorange\">IN</font> (<font color=\"darkcyan\">$stateFrom</font>) <font color=\"yellow\">AND</font> DestState <font color=\"darkorange\">IN</font> (<font color=\"darkcyan\">$stateTo</font>) <font color=\"yellow\">AND</font> <font color=\"darkcyan\">$timeFilter</font> <font color=\"darkorange\">GROUP BY</font> t <font color=\"darkorange\">ORDER BY</font> t",
+              "intervalFactor": 1,
+              "query": "SELECT $timeSeries as t, count(*) Flights FROM $table WHERE OriginState IN ($stateFrom) AND DestState IN ($stateTo) AND $timeFilter GROUP BY t ORDER BY t",
+              "rawQuery": "SELECT (intDiv(toUInt32(toDateTime(FlightDate)), 86400) * 86400) * 1000 as t, count(*) Flights FROM default.ontime WHERE OriginState IN ('NY','CA','OK','HI','TX','IL','FL','MA','WA','NV','NC','VA','AZ','IN','MN','GA','CO','MO','PA','NJ','TN','LA','MI','IA','UT','NE','ID','OH','PR','MD','VI','NM','CT','WI','OR','RI','ME','SC','KS','AK','WY','VT','MS','AR','KY','WV','MT','ND','AL','SD','NH','TT') AND DestState IN ('NY','WA','IL','CA','TX','FL','CO','HI','NV','MA','MO','PA','VA','MI','NC','AZ','OR','MD','VI','MN','NJ','WI','OK','LA','PR','GA','TN','NM','UT','KY','NE','CT','OH','IN','WY','ID','AK','IA','RI','ME','SC','VT','MT','MS','AL','KS','SD','TT','AR','ND','NH','WV') AND FlightDate BETWEEN toDate(511814887) AND toDate(1507626390) AND toDateTime(FlightDate) BETWEEN toDateTime(511814887) AND toDateTime(1507626390) GROUP BY t ORDER BY t",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "table": "ontime",
+              "tableLoading": false
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Number of Flights",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 319,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "demo",
+          "fill": 1,
+          "id": 2,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "database": "default",
+              "dateColDataType": "FlightDate",
+              "dateLoading": false,
+              "dateTimeColDataType": "toDateTime(FlightDate)",
+              "datetimeLoading": false,
+              "formattedQuery": "<font color=\"darkorange\">SELECT</font> <font color=\"darkcyan\">$timeSeries</font> <font color=\"darkorange\">as</font> t, <font color=\"navajowhite\">avg</font>(Distance)<font color=\"yellow\">*</font><font color=\"cornflowerblue\">1</font><font color=\"cornflowerblue\">.60934</font> Distance <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font> <font color=\"darkorange\">WHERE</font> OriginState <font color=\"darkorange\">IN</font> (<font color=\"darkcyan\">$stateFrom</font>) <font color=\"yellow\">AND</font> DestState <font color=\"darkorange\">IN</font> (<font color=\"darkcyan\">$stateTo</font>) <font color=\"yellow\">AND</font> <font color=\"darkcyan\">$timeFilter</font> <font color=\"darkorange\">GROUP BY</font> t <font color=\"darkorange\">ORDER BY</font> t",
+              "intervalFactor": 1,
+              "query": "SELECT $timeSeries as t, avg(Distance)*1.60934 Distance FROM $table WHERE OriginState IN ($stateFrom) AND DestState IN ($stateTo) AND $timeFilter GROUP BY t ORDER BY t",
+              "rawQuery": "SELECT (intDiv(toUInt32(toDateTime(FlightDate)), 86400) * 86400) * 1000 as t, avg(Distance)*1.60934 Distance FROM default.ontime WHERE OriginState IN ('NY','CA','OK','HI','TX','IL','FL','MA','WA','NV','NC','VA','AZ','IN','MN','GA','CO','MO','PA','NJ','TN','LA','MI','IA','UT','NE','ID','OH','PR','MD','VI','NM','CT','WI','OR','RI','ME','SC','KS','AK','WY','VT','MS','AR','KY','WV','MT','ND','AL','SD','NH','TT') AND DestState IN ('NY','WA','IL','CA','TX','FL','CO','HI','NV','MA','MO','PA','VA','MI','NC','AZ','OR','MD','VI','MN','NJ','WI','OK','LA','PR','GA','TN','NM','UT','KY','NE','CT','OH','IN','WY','ID','AK','IA','RI','ME','SC','VT','MT','MS','AL','KS','SD','TT','AR','ND','NH','WV') AND FlightDate BETWEEN toDate(511814887) AND toDate(1507626390) AND toDateTime(FlightDate) BETWEEN toDateTime(511814887) AND toDateTime(1507626390) GROUP BY t ORDER BY t",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "table": "ontime",
+              "tableLoading": false
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Average Flight Distance, km",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "demo",
+        "hide": 0,
+        "includeAll": true,
+        "label": "From State",
+        "multi": true,
+        "name": "stateFrom",
+        "options": [],
+        "query": "select distinct OriginState from default.ontime",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "demo",
+        "hide": 0,
+        "includeAll": true,
+        "label": "To State",
+        "multi": true,
+        "name": "stateTo",
+        "options": [],
+        "query": "select distinct DestState from default.ontime",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "1986-03-21T18:48:06.364Z",
+    "to": "2017-10-10T09:06:29.221Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Ontime",
+  "version": 6
+}

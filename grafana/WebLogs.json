@@ -1,0 +1,268 @@
+{"dashboard":{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "links": [],
+  "refresh": false,
+  "rows": [
+    {
+      "collapse": false,
+      "height": 384,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "demo",
+          "fill": 1,
+          "id": 1,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "database": "default",
+              "dateColDataType": "logdate",
+              "dateLoading": false,
+              "dateTimeColDataType": "logdatetime",
+              "datetimeLoading": false,
+              "formattedQuery": "<font color=\"darkorange\">SELECT</font> <font color=\"darkcyan\">$timeSeries</font> <font color=\"darkorange\">as</font> t, <font color=\"navajowhite\">count</font>(<font color=\"yellow\">*</font>) requests <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font> <font color=\"darkorange\">WHERE</font> verb <font color=\"darkorange\">IN</font> (<font color=\"darkcyan\">$httpMethod</font>) <font color=\"yellow\">AND</font> <font color=\"darkcyan\">$timeFilter</font> <font color=\"darkorange\">GROUP BY</font> t <font color=\"darkorange\">ORDER BY</font> t",
+              "intervalFactor": 1,
+              "query": "SELECT $timeSeries as t, count(*) requests FROM $table WHERE verb IN ($httpMethod) AND $timeFilter GROUP BY t ORDER BY t",
+              "rawQuery": "SELECT (intDiv(toUInt32(logdatetime), 300) * 300) * 1000 as t, count(*) requests FROM default.nginx_access WHERE verb IN ('GET') AND logdate >= toDate(1507106739) AND logdatetime >= toDateTime(1507106739) GROUP BY t ORDER BY t",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "table": "nginx_access",
+              "tableLoading": false
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Access Requests",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 307,
+      "panels": [
+        {
+          "columns": [],
+          "datasource": "demo",
+          "fontSize": "100%",
+          "hideTimeOverride": false,
+          "id": 2,
+          "links": [],
+          "pageSize": null,
+          "scroll": true,
+          "showHeader": true,
+          "sort": {
+            "col": 2,
+            "desc": true
+          },
+          "span": 12,
+          "styles": [
+            {
+              "alias": "Time",
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "link": false,
+              "linkTooltip": "",
+              "linkUrl": "",
+              "pattern": "Time",
+              "type": "date"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 2,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "database": "default",
+              "dateColDataType": "logdate",
+              "dateLoading": false,
+              "dateTimeColDataType": "logdatetime",
+              "datetimeLoading": false,
+              "formattedQuery": "<font color=\"darkorange\">SELECT</font> <font color=\"navajowhite\">min</font>(<font color=\"darkcyan\">$timeSeries</font>) <font color=\"darkorange\">as</font> t, request Request , <font color=\"navajowhite\">count</font>(<font color=\"yellow\">*</font>) Count <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font> <font color=\"darkorange\">WHERE</font>  verb <font color=\"darkorange\">IN</font>(<font color=\"darkcyan\">$httpMethod</font>) <font color=\"yellow\">AND</font> <font color=\"darkcyan\">$timeFilter</font> <font color=\"darkorange\">GROUP BY</font> Request <font color=\"darkorange\">ORDER BY</font>  Count <font color=\"darkorange\">DESC</font> <font color=\"darkorange\">LIMIT</font> <font color=\"cornflowerblue\">10</font>",
+              "intervalFactor": 1,
+              "query": "SELECT min($timeSeries) as t, request Request , count(*) Count FROM $table WHERE  verb IN($httpMethod) AND $timeFilter GROUP BY Request ORDER BY  Count DESC LIMIT 10",
+              "rawQuery": "SELECT min((intDiv(toUInt32(logdatetime), 300) * 300) * 1000) as t, request Request , count(*) Count FROM default.nginx_access WHERE  verb IN('GET') AND logdate >= toDate(1507106739) AND logdatetime >= toDateTime(1507106739) GROUP BY Request ORDER BY  Count DESC LIMIT 10",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "table": "nginx_access",
+              "tableLoading": false
+            }
+          ],
+          "title": "Top 10 Requests",
+          "transform": "timeseries_to_columns",
+          "type": "table"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "GET",
+          "value": [
+            "GET"
+          ]
+        },
+        "datasource": "demo",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Method",
+        "multi": true,
+        "name": "httpMethod",
+        "options": [
+          {
+            "selected": true,
+            "text": "GET",
+            "value": "GET"
+          },
+          {
+            "selected": false,
+            "text": "POST",
+            "value": "POST"
+          },
+          {
+            "selected": false,
+            "text": "HEAD",
+            "value": "HEAD"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS",
+            "value": "OPTIONS"
+          }
+        ],
+        "query": "select distinct verb from nginx_access",
+        "refresh": 0,
+        "regex": "\\w+",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Web Logs",
+  "version": 4
+}
+, "overwrite": true}

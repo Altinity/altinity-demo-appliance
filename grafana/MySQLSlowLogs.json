@@ -1,0 +1,241 @@
+{"dashboard":{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "links": [],
+  "refresh": false,
+  "rows": [
+    {
+      "collapse": false,
+      "height": 314,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "demo",
+          "fill": 1,
+          "id": 1,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "database": "default",
+              "dateColDataType": "logdate",
+              "dateLoading": false,
+              "dateTimeColDataType": "logdatetime",
+              "datetimeLoading": false,
+              "formattedQuery": "<font color=\"darkorange\">SELECT</font> <font color=\"darkcyan\">$timeSeries</font> <font color=\"darkorange\">as</font> t, <font color=\"navajowhite\">count</font>(<font color=\"yellow\">*</font>) <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font> <font color=\"darkorange\">WHERE</font> <font color=\"darkcyan\">$timeFilter</font> <font color=\"darkorange\">GROUP BY</font> t <font color=\"darkorange\">ORDER BY</font> t",
+              "intervalFactor": 1,
+              "query": "SELECT $timeSeries as t, count(*) FROM $table WHERE $timeFilter GROUP BY t ORDER BY t",
+              "rawQuery": "SELECT (intDiv(toUInt32(logdatetime), 300) * 300) * 1000 as t, count(*) FROM default.mysql_slow_log WHERE logdate BETWEEN toDate(1507864704) AND toDate(1508659748) AND logdatetime BETWEEN toDateTime(1507864704) AND toDateTime(1508659748) GROUP BY t ORDER BY t",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "table": "mysql_slow_log",
+              "tableLoading": false
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Number of Slow Queries",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 302,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "demo",
+          "fill": 1,
+          "id": 2,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "database": "default",
+              "dateColDataType": "logdate",
+              "dateLoading": false,
+              "dateTimeColDataType": "logdatetime",
+              "datetimeLoading": false,
+              "formattedQuery": "<font color=\"darkorange\">SELECT</font> <font color=\"darkcyan\">$timeSeries</font> <font color=\"darkorange\">as</font> t, <font color=\"navajowhite\">avg</font>(duration) <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font> <font color=\"darkorange\">WHERE</font> <font color=\"darkcyan\">$timeFilter</font> <font color=\"darkorange\">GROUP BY</font> t <font color=\"darkorange\">ORDER BY</font> t",
+              "intervalFactor": 1,
+              "query": "SELECT $timeSeries as t, avg(duration) FROM $table WHERE $timeFilter GROUP BY t ORDER BY t",
+              "rawQuery": "SELECT (intDiv(toUInt32(logdatetime), 300) * 300) * 1000 as t, avg(duration) FROM default.mysql_slow_log WHERE logdate BETWEEN toDate(1507864704) AND toDate(1508659748) AND logdatetime BETWEEN toDateTime(1507864704) AND toDateTime(1508659748) GROUP BY t ORDER BY t",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "table": "mysql_slow_log",
+              "tableLoading": false
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Average Query Time",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2017-10-13T03:18:23.650Z",
+    "to": "2017-10-22T08:09:07.015Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "MySQL Slow Logs",
+  "version": 3
+}, "overwrite": true}
